@@ -1,0 +1,44 @@
+# Security Testing Suite Requirements
+# Production-grade security testing framework
+
+# HTTP client
+requests==2.31.0
+urllib3==2.1.0
+
+# HTML parsing
+beautifulsoup4==4.12.2
+lxml==4.9.3
+
+# JWT handling
+PyJWT==2.8.0
+cryptography==41.0.7
+
+# Testing framework
+pytest==7.4.3
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+
+# Code quality
+flake8==6.1.0
+black==23.12.1
+mypy==1.7.1
+
+# Type hints
+types-requests==2.31.0.20231231
+types-beautifulsoup4==4.12.0.7
+
+# Reporting
+Jinja2==3.1.2
+MarkupSafe==2.1.3
+
+# Configuration
+python-dotenv==1.0.0
+PyYAML==6.0.1
+
+# Security scanning tools
+bandit==1.7.5  # Security linter for Python
+safety==2.3.5  # Dependency vulnerability scanner
+
+# Optional: Integration with security tools
+# owasp-zap-api-python==0.3.0  # OWASP ZAP integration
+# requests-oauthlib==1.3.1     # OAuth testing
