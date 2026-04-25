@@ -7,7 +7,7 @@
 
 Production-grade security testing framework implementing **OWASP Top 10** automated testing, API security validation, and secrets detection.
 
-Built for a fintech company processing **$50M+ daily transactions**, this framework discovered **23 critical vulnerabilities** before reaching production, preventing an estimated **$5M+ in potential losses** from security breaches.
+Built to automate security scanning across web applications and APIs — covering SQL injection, XSS, authentication testing, secrets detection, and dependency vulnerability checks with CWE ID tracking and severity classification.
 
 ---
 
@@ -519,64 +519,26 @@ SCAN_CONFIG = {
 
 ---
 
-## 📊 Real-World Results
+## 📊 What It Detects
 
-### Fintech Company Case Study
+The scanner covers the full OWASP Top 10 with specific detection patterns:
 
-**Background:**
-- Financial services platform processing $50M+ daily
-- 500K+ active users
-- Strict PCI-DSS compliance requirements
+| Category | Detection Method | CWE IDs |
+|----------|-----------------|---------|
+| SQL Injection | Payload-based testing with error analysis | CWE-89 |
+| XSS | Reflected/stored payload injection | CWE-79 |
+| Authentication | Brute force, session fixation, token analysis | CWE-287 |
+| Secrets | Regex-based credential detection with confidence scoring | CWE-798 |
+| JWT | None algorithm, expiration, key strength | CWE-345 |
+| CORS | Misconfiguration and wildcard detection | CWE-942 |
+| Rate Limiting | Automated request flooding tests | CWE-770 |
+| Mass Assignment | Parameter pollution and privilege escalation | CWE-915 |
 
-**Implementation:**
-- Deployed security testing suite in CI/CD pipeline
-- Automated OWASP Top 10 scanning on every PR
-- Weekly full security audits
-- Integration with bug bounty program
-
-**Results:**
-
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| Vulnerabilities Found Pre-Production | 0 | 23 | ∞ |
-| Production Security Incidents | 12/year | 1/year | 92% reduction |
-| Security Audit Time | 40 hours | 2 hours | 95% faster |
-| Mean Time to Detect | 30 days | 2 hours | 99.7% faster |
-| Compliance Audit Pass Rate | 75% | 100% | +25 points |
-| Potential Loss Prevented | - | $5M+ | - |
-
-**Critical Vulnerabilities Caught:**
-
-1. **SQL Injection in Payment Processing** (CVSS 9.8)
-   - Could have exposed all customer payment data
-   - Estimated impact: $2M+ in fines and damages
-
-2. **JWT None Algorithm Vulnerability** (CVSS 9.8)
-   - Allowed unauthorized access to any account
-   - Estimated impact: $3M+ in fraud losses
-
-3. **Hardcoded AWS Keys in Source Code** (CVSS 9.1)
-   - Exposed production database credentials
-   - Estimated impact: $500K+ in breach costs
-
-4. **Mass Assignment in User Profile API** (CVSS 9.1)
-   - Allowed privilege escalation to admin
-   - Estimated impact: Complete system compromise
-
-5. **Missing Rate Limiting on Login** (CVSS 7.5)
-   - Enabled brute force attacks
-   - Estimated impact: 1000+ compromised accounts
-
-**Stakeholder Feedback:**
-
-> "This framework prevented what could have been a catastrophic security breach. Finding that SQL injection before production saved us millions in potential losses."
-> — **CISO, Fintech Company**
-
-> "Security testing went from a 2-week manual audit to 2-hour automated scans. We now catch vulnerabilities in hours, not months."
-> — **VP of Engineering**
-
-> "Our PCI-DSS compliance audits are now straightforward. We can prove every endpoint is tested for security vulnerabilities."
-> — **Compliance Manager**
+**Architecture:**
+- `security_scanner.py` (31KB) — Core OWASP scanner with severity classification
+- `api_security.py` (19KB) — JWT, CORS, rate limiting, API-specific tests
+- `secrets_detector.py` (14KB) — Credential detection with false positive filtering
+- `tests/test_security_scanner.py` (10KB) — Mocked tests for all scanner modules
 
 ---
 
